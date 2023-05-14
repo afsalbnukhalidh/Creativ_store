@@ -1,0 +1,70 @@
+﻿@model List<CreativeStore.Models.Domain.Product>
+@{
+	ViewData["Title"] = "Index";
+}
+@{
+	@if(TempData["success"] != null)
+	{
+		<h1>@TempData["success"]</h1>
+	}
+}
+<div class="bg-info bg-opacity-10 py-2">
+	<div class="container">
+		<div class="text-center">
+			<h1>Admin Area of Product</h1>
+		</div>
+	</div>
+</div>
+<br />
+<div class="container row">
+	<div class="col-lg-6">
+		<h4 class="text-warning">Product List</h4>
+	</div>
+	<div class="col-lg-6 text-end">
+		<a class="btn btn-warning" asp-for="" asp-controller="AdminProduct" asp-action="Create">Create New Product</a>
+	</div>
+</div>
+<br />
+<div>
+	<table class="container table table-striped table-hover table-info">
+		<thead>
+			<tr>
+				<th>Product Name</th>
+				<th>Category Name</th>
+				<th>Description</th>
+				<th>Stock</th>
+				<th>Image</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var obj in Model)
+			{
+				<tr>
+					<td style="width:20%">
+							@obj.Name
+					</td>
+					<td style="width:20%">
+							@obj.Category.Name
+					</td>
+					<td style="width:30%">
+							@obj.Description
+					</td>
+					<td style="width:5%">
+							@obj.Stock
+					</td>
+					<td style="width:15%">
+							@obj.Image
+					</td>
+					<td style="width:5%">
+						<a asp-route-id="@obj.id" asp-controller="AdminProduct" asp-action="Edit" class="btn btn-warning">Edit</a>
+					</td>
+					<td style="width:5%">
+						<a asp-route-id="@obj.id" asp-controller="AdminProduct" asp-action="Edit" class="btn btn-danger">Delete</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

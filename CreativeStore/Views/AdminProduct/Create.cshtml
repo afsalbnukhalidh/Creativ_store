@@ -1,0 +1,46 @@
+﻿@model CreativeStore.Models.ViewModel.ProductRequest
+@{
+}
+<div class="bg-info bg-opacity-10 py-2">
+	<div class="text-center">
+		<h1 class="text-warning">Product Adding Section</h1>
+	</div>
+</div>
+<br />
+<div class="container">
+	<form method="post">
+		<div class="form-group mb-3">
+			<label asp-for="Name" class="form-label">Name</label>
+			<input type="text" class="form-control" id="name" asp-for="Name" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div class="form-group mb-3">
+			<label asp-for="CategoryId" class="form-label">Category Name</label>
+			<select asp-for="CategoryId" class="form-control" asp-items="@Model.Categories"></select>
+			@*<span asp-validation-for="Categories" class="text-danger"></span>*@
+		</div>
+		<div class="form-group mb-3">
+			<label asp-for="Description" class="form-label">Description</label>
+			<input type="text" class="form-control" id="description" asp-for="Description" />
+			<span asp-validation-for="Description" class="text-danger"></span>
+		</div>
+		<div class="form-group mb-3">
+			<label asp-for="Stock" class="form-label">Stock</label>
+			<input type="text" class="form-control" id="stock" asp-for="Stock" />
+			<span asp-validation-for="Stock" class="text-danger"></span>
+		</div>
+		<div class="form-group mb-3">
+			<label asp-for="Image" class="form-label">Image</label>
+			<input type="file" class="form-control" id="image" asp-for="Image" />
+			<span asp-validation-for="Image" class="text-danger"></span>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<input type="submit" class="btn btn-success" />
+			</div>
+			<div class="col-lg-6 text-end">
+				<a  class="btn btn-warning" asp-controller="AdminProduct" asp-action="AdminProductIndex">Back To List</a>
+			</div>
+		</div>
+	</form>
+</div>
